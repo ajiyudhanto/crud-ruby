@@ -1,6 +1,12 @@
 class CardsController < InheritedResources::Base
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @toDoCards = Card.where(status: "todo")
+    @doingCards = Card.where(status: "doing")
+    @doneCards = Card.where(status: "done")
+  end
+
   def show
   end
 
